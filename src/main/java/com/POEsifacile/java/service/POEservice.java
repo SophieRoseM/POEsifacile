@@ -7,6 +7,8 @@ import com.POEsifacile.java.repository.utilisateurrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +16,7 @@ import java.util.List;
 
 public class POEservice {
 
-// pour chaque joueur affiche score de chaque salle
+
 
     @Autowired
     private utilisateurrepository utilisateurrepository;
@@ -22,7 +24,7 @@ public class POEservice {
     private historiquerepository historiquerepository;
 
 
-
+// verifie si l'id existe
     public utilisateur recupereutilisateur(Integer id ) throws Exception{
         if (utilisateurrepository.exists(id)){
            return utilisateurrepository.findById(id);
@@ -30,25 +32,24 @@ public class POEservice {
             throw new Exception("l'id n'existe pas!");
         }
     }
-
-    public List<IdentifiantScore> recuperetouslesutilisateur() {
+//
+    public  List<IdentifiantScore> recuperetouslesutilisateur() { // cree une liste avec les pseudo et les scores
         //List identifiant score
-        
+        List<IdentifiantScore> recupid = new ArrayList <>();
         //Recupere tous les utilisateurs
+        List<utilisateur> recuputilisateur = utilisateurrepository.findAll();
 
         //pour chaque utilisateur, tu construis un identifiantscore que tu ajoutes dans ta liste
+        for ( utilisateur i : recuputilisateur ){
 
+            //cree un identifiant pour chaque i
+            //le mettre dans la liste
+            //refaire une boucle for avec les historiques
+        }
         //tu retournes ta liste
-        return null;
+        return recupid;
     }
 
 
-//public IdentifiantScore recuperepseudo(String pseudo)throws Exception{
-//        if( identifiantrepository.exists(pseudo)) {
-//        return identifiantrepository.findbyPseudoAndScore(pseudo, score);
-//            } else {
-//            throw new Exception("le pseudo n'existe pas");
-//
-//        }
-//}
+
 }
