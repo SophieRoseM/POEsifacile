@@ -12,19 +12,20 @@ public class historique {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_sauvegarde;
-    private String salle;
+    private Integer salle;
     private Integer score;
 
 
 @ManyToOne
 @JoinColumn(name = "id_joueur")
-
 private utilisateur utilisateur;
 
     public historique(){}
 
-    public historique(String salle) {
+    public historique(Integer salle, Integer score, com.POEsifacile.java.model.utilisateur utilisateur) {
         this.salle = salle;
+        this.score = score;
+        this.utilisateur = utilisateur;
     }
 
     public Integer getId_sauvegarde() {
@@ -35,11 +36,11 @@ private utilisateur utilisateur;
         this.id_sauvegarde = id_sauvegarde;
     }
 
-    public String getSalle() {
+    public Integer getSalle() {
         return salle;
     }
 
-    public void setSalle(String salle) {
+    public void setSalle(Integer salle) {
         this.salle = salle;
     }
 
